@@ -4,7 +4,16 @@ Server pro distribuci firmware do bateriových a solárních ESP32 zařízení, 
 
 Zařízení při probuzení kontaktuje server přes HTTPS, oznámí běžící firmware a získá případný OTA manifest. Server uchovává binárky, přiřazení aktualizací a historii kontaktů i výsledků.
 
-**Stav projektu:** implementační specifikace, revize 1, 2026-10-23. Aplikace, Docker image ani ESP32 handler zatím nejsou implementované. Konfigurační příklady popisují cílovou implementaci.
+**Stav projektu:** funkční MVP API a Docker image; rozšíření administrace, migrace a fyzická ESP32 akceptace jsou další krok. Implementační kontrakt je v dokumentaci níže.
+
+## Rychlý start
+
+```bash
+docker compose up --build
+docker compose exec ota-server ota-server admin create
+```
+
+API je na `http://localhost:8000`; produkční provoz vyžaduje HTTPS reverzní proxy. Pro lokální vývoj lze spustit `python -m app.main` po instalaci `pip install -e .`.
 
 ## Dokumentace
 
